@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>글로그 이미지 변환 툴</title>
+        <link rel="icon" type="image/svg+xml" href="temp/book-half.svg">
+        
+        <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+        <script type="text/javascript" src="js\jszip-main\dist\jszip.min.js"></script>
+        <script type="text/javascript" src="js\jszip-utils-master\dist\jszip-utils.min.js"></script>
+
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/page-layout.css">
+
+        <script src="js/text2image.js"></script>
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <main>
+                <div class="py-5 text-center">
+                    <a href="index.html" class="link-none-decoration">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+                            <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                        </svg>
+                    </a>
+                    <h2 id="site-title">글로그 이미지 변환 툴</h2>
+                    <p class="lead">
+                        입력된 본문을 A5 비율의 이미지로 생성합니다.<br>
+                        배경 이미지의 사이즈 및 본문량에 따라 처리에 시간이 걸릴 수 있습니다.<br>
+                        <span id="heading-version">v.1.0.0 (23.10.29up)</span>
+                    </p>
+                </div>
+                <div class="row g-5" id="result">
+                    <div class="mb-auto">
+                        <div id="preview-page-result">
+                            <div id="canvas-generate"></div>
+                        </div>
+                        <div class="pt-4 btn-saves">
+                            <input class="btn btn-outline-primary" type="button" value="한 장 씩 저장" id="btn-save-singly">
+                            <input class="btn btn-outline-primary" type="button" value="zip으로 저장" id="btn-save-zip">
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5" id="main">
+                    <div class="col-md-5 col-lg-4 order-md-last">
+                        <h6>미리보기</h6>
+                        <div class="pt-2">
+                            <div class="page" id="preview-page">
+                                <!-- <div class="page-bgimg"></div> -->
+                                <img class="page-bgimg" decoding="sync">
+                                <div class="contents">
+                                    <div class="contents-text zero-space">
+                                        <div class="user-ts ts-content ts-pretendard ts-pretendard-text">
+                                            <p>오늘도 또 우리 수탉이 막 쫓기었다. 내가 점심을 먹고 나무를 하러 갈 양으로 나올 때이었다. 산으로 올라서려니까 등 뒤에서 푸드득푸드득 하고 닭의 횃소리가 야단이다. 깜짝 놀라서 고개를 돌려보니 아니나 다르랴 두 놈이 또 얼리었다.</p>
+                                            <p>점순네 수탉은 이 덩저리 작은 우리 수탉을 함부로 해내는 것이다. 그것도 그냥 해내는 것이 아니라 푸드득하고 면두를 쪼고 물러섰다가 좀 사이를 두고 또 푸드득하고 모가지를 쪼았다. 이렇게 멋을 부려 가며 여지없이 닦아 놓는다. 그러면 이 못생긴 것은 쪼일 적마다 주둥이로 땅을 받으며 그 비명이 킥, 킥 할 뿐이다. 물론 미처 아물지도 않은 면두를 또 쪼이며 붉은 선혈은 뚝뚝 떨어진다.</p>
+                                            <p>이걸 가만히 내려다보자니 내 대강 이가 터져서 피가 흐르는 것 같이 두 눈에서 불이 번쩍 난다. 대뜸 지게막대기를 메고 달려들어 점순네 닭을 후려칠까 하다가 생각을 고쳐먹고 헛매질로 떼어만 놓았다.</p>
+                                            <p>이번에도 점순이가 쌈을 붙여 놨을 것이다. 바짝바짝 내 기를 올리느라고 그랬음에 틀림없을 것이다.</p>
+                                            <p>고놈의 계집애가 요새로 들어서서 왜 나를 못 먹겠다고 그렇게 아르릉거리는지 모른다.</p>
+                                            <p>나흘 전 감자건만 하더라도 나는 저에게 조금도 잘못한 것은 없다.</p>
+                                            <p>계집애가 나물을 캐러 가면 갔지 남 울타리 엮는 데 쌩이질을 하는 것은 다 뭐냐. 그것도 발소리를 죽여가지고 등 뒤로 살며시 와서,</p>
+                                            <p>"얘 너 혼자만 일하니?"</p>
+                                            <p>하고 긴치 않은 수작을 하는 것이다.</p>
+                                            <p>이제까지도 저와 나는 이야기도 잘 않고 서로 만나도 본체만체하고 이렇게 점잖게 지내던 터이련만 오늘로 갑작스레 대견해졌음은 웬일인가. 항차 망아지만 한 계집애가 남 일하는 놈보고..</p>
+                                            <!-- <p>"그럼 혼자 하지 떼루 하듸?"</p> -->
+                                        </div>
+                                    </div>
+                                    <div class="contents-footer-left zero-space">
+                                        <p class="user-ts ts-footer ts-pretendard ts-pretendard-ft">
+                                            <span class="page-num">
+                                                <span class="name-page-num">10</span>&nbsp;
+                                            </span>
+                                            <span class="name-footer-left">왼쪽 꼬릿말</span>
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="contents-footer-right zero-space">
+                                        <p class="user-ts ts-footer ts-pretendard ts-pretendard-ft">
+                                            <span class="name-footer-right">오른쪽 꼬릿말</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-2 label-prepage">
+                            <span class="text-body-tertiary">미리보기를 위해 연출된 화면입니다.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8">
+                        <div class="mb-4">
+                            <h6>설정</h6>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="input-switch-indent" checked disabled>
+                                <label class="form-check-label" for="input-switch-indent">첫째줄 들여쓰기</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="input-switch-line-margin" checked disabled>
+                                <label class="form-check-label" for="input-switch-line-margin">단락 뒤 공백</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" role="switch" id="switch-line-margin" checked>
+                                <label class="form-check-label" for="switch-line-margin">시작 페이지 번호</label>
+                            </div>
+                            <input type="text" class="form-control" id="input-footer-pagenum" value="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="input-footer-left" class="form-label">왼쪽 꼬릿말</label>
+                            <input type="text" class="form-control" id="input-footer-left" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="input-footer-right" class="form-label">오른쪽 꼬릿말</label>
+                            <input type="text" class="form-control" id="input-footer-right" autocomplete="off">
+                        </div>
+                        <div class="mb-4">
+                            <label for="input-ctn-text" class="form-label">본문</label>
+                            <textarea class="form-control" id="input-ctn-text" rows="10"></textarea>
+                            <div class="pt-2">
+                                <span class="text-body-tertiary">2만자 미만의 입력을 권장합니다. (1페이지당 공백포함 약 800자)</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="color-font" class="form-label">글자색</label>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <input type="color" class="form-control form-control-color" id="color-font" value="#282828" title="글자색">
+                                        </div>
+                                        <div class="col-sm-8 input-color">
+                                            <input type="text" id="input-color-font" class="form-control" value="#282828" aria-label="input-color-font" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="color-background" class="form-label">배경색</label>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <input type="color" class="form-control form-control-color" id="color-background" value="#ffffff" title="배경색">
+                                        </div>
+                                        <div class="col-sm-8 input-color">
+                                            <input type="text" id="input-color-background" class="form-control" value="#ffffff" aria-label="input-color-background" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <span class="text-body-tertiary">왼쪽의 피커를 통해 색상을 선택해주세요. HEX 코드 입력 및 색상 추출 도구를 지원합니다.</span>
+                            </div>
+                            <div class="pt-1">
+                                <span class="badge text-bg-info">tips</span>
+                                <a href="https://color.adobe.com/ko/create/color-contrast-analyzer" class="icon-link icon-link-hover" target="_blank">
+                                    Adobe 색상 대비 검사기
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" role="switch" id="switch-bgimage" unchecked>
+                                <label class="form-check-label" for="switch-bgimage">배경 이미지</label>
+                            </div>
+                            <input class="form-control" type="file" id="input-image" name="input-image" disabled>
+                        </div>
+
+                        <div class="mb-5">
+                            <h6>글꼴</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="input-radio-font" id="input-font-pretendard" value="pretendard" checked>
+                                <label class="form-check-label" for="input-font-pretendard">Pretendard</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="input-radio-font" id="input-font-kopubbatang" value="kopubbatang">
+                                <label class="form-check-label" for="input-font-kopubbatang">Kopub 바탕</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="btn btn-primary" type="button" value="이미지 생성" id="btn-submit">
+                        </div>
+                    </div>
+                </main>
+                
+                <footer class="my-5 pt-5 text-muted text-center text-small">
+                    <p class="mb-1">&copy; 2023 호랑적림
+                        <!-- <span class="badge text-bg-light"><i class="bi bi-envelope"></i> Email</span> -->
+                    </p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="">이용 안내</a></li>
+                        <li class="list-inline-item"><a href="">제보 및 건의</a></li>
+                        <li class="list-inline-item"><a href="">업데이트</a></li>
+                    </ul>
+                    <ul class="list-inline">
+                        <!-- <li class="list-inline-item">
+                            <a href="https://twitter.com/Samidare_Cb" target="_blank">
+                                <span class="badge text-bg-dark"><i class="bi bi-twitter"></i> twitter</span>
+                            </a>
+                        </li> -->
+                        <!-- <li class="list-inline-item"><span class="badge text-bg-light"><i class="bi bi-envelope"></i> e-mail</span></li> -->
+                        <!-- <li class="list-inline-item"><span class="badge text-bg-warning"><i class="bi bi-exclamation-triangle"></i> Supports</span></li> -->
+                        <!-- <li class="list-inline-item"><span class="badge text-bg-primary"><i class="bi bi-question-octagon"></i> Reports</span></li> -->
+                        <!-- <li class="list-inline-item"><span class="badge text-bg-success"><i class="bi bi-file-earmark-spreadsheet"></i> Supports</span></li> -->
+                    </ul>
+                  </footer>
+            </div>
+        </div>
+        <div id="img-download">
+            <div id="link-generate"></div>
+            <div id="page-templates">
+                <div class="page">
+                    <img class="page-bgimg" decoding="sync">
+                    <div class="contents">
+                        <div class="contents-text zero-space">
+                            <div class="user-ts ts-content ts-pretendard ts-pretendard-text">
+                            </div>
+                        </div>
+                        <div class="contents-footer-left zero-space">
+                            <p class="user-ts ts-footer ts-pretendard ts-pretendard-ft">
+                                <span class="page-num">
+                                    <span class="name-page-num">N</span>&nbsp;
+                                </span>
+                                <span class="name-footer-left">왼쪽 꼬릿말</span>
+                            </p>
+                        </div>
+                        <div class="contents-footer-right zero-space">
+                            <p class="user-ts ts-footer ts-pretendard ts-pretendard-ft">
+                                <span class="name-footer-right">오른쪽 꼬릿말</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="page-generate"></div>
+        </div>
+    </body>
+</html>

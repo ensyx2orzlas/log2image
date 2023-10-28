@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container {
+    max-width: 960px;
+    font-family: 'Pretendard-Regular';
+}
+
+#site-title {
+    margin-top: 1.5rem;
+}
+
+.lead {
+    font-size: 1.1rem;
+}
+
+.input-color {
+    margin-left: 0.3rem;
+}
+
+.link-none-decoration {
+    text-decoration: none;
+
+    /* need bootstrap */
+    color: var(--bs-heading-color);
+}
+
+.label-prepage {
+    text-align: center;
+}
+
+.cs-check-inline {
+    margin-left: 0.1rem;
+}
+
+
+/* 프리뷰 */
+#preview-page {
+    margin: auto;
+    border: 1px solid var(--bs-border-color);
+    float: none;
+    /* display: none; */
+}
+
+#preview-page div {
+    overflow: visible;
+}
+
+/* 다운로드 영역 */
+#img-download {
+    display: none;
+    visibility: hidden;
+}
+
+#page-templates {
+    display: hidden;
+}
+
+#page-generate > div {
+    float: left;
+}
+
+/* 결과화면 */
+#result {
+    display: none;
+}
+
+#preview-page-result {
+    overflow-x: auto;
+    white-space: nowrap;
+    
+    text-align: center;
+    
+    padding-bottom: 1rem;
+}
+
+.btn-saves {
+    text-align: center;
+}
+
+.btn-saves > input:not(:last-of-type) {
+    margin-right: 0.5rem;
+}
+
+#canvas-generate > canvas {
+    /* float: left; */
+    /* margin-right: 1rem; */
+    border: 1px solid var(--bs-border-color);
+}
+
+#canvas-generate > canvas:not(:last-of-type) {
+    margin-right: 1rem;
+}
+
+#heading-version {
+    font-size: 1rem;
+    color: var(--bs-secondary-color)!important
+}
+
+
+body::-webkit-scrollbar, textarea::-webkit-scrollbar, div::-webkit-scrollbar {
+    width: 0.5rem;  /* 스크롤바의 너비 */
+    height: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb, textarea::-webkit-scrollbar-thumb, div::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #8b98a4; /* 스크롤바의 색상 */
+    border-radius: 0.5rem;
+}
+
+body::-webkit-scrollbar-track, textarea::-webkit-scrollbar-track, div::-webkit-scrollbar-track {
+    background: #e9ecef8c;  /*스크롤바 뒷 배경 색상*/
+}

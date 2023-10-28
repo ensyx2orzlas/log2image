@@ -1,0 +1,204 @@
+/** 폰트 */
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KoPubWorldBatang';
+    font-weight: 500;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldBatangLight.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldBatangLight.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldBatangLight.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldBatangLight.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldBatangLight.ttf') format("truetype");
+    font-display: swap;
+}
+
+/** 변수 */
+:root {
+    --prepage-max-width: 280px;
+    --prepage-max-height: 395px;
+
+    --prepage-content-margin-top: 46px;
+    --prepage-content-margin-bottom: 23px;
+
+    --prepage-content-margin-side: 34px;
+
+    --user-bg-color: #ffffff;
+    --user-font-color: #282828;
+
+    --user-font-size: 0.45rem;
+}
+
+/** Pretendard */
+.ts-pretendard {
+    font-family: 'Pretendard-Regular';
+}
+
+.ts-pretendard-ft {
+    font-size: 0.4rem;
+    line-height: var(--prepage-content-margin-bottom);
+    /* letter-spacing: -1pt; */
+}
+
+.ts-pretendard-text {
+    font-size: 0.45rem;
+}
+
+.ts-pretendard-text > p {
+    text-indent: 0.35rem;
+    margin-bottom: 0.25rem;
+    line-height: 0.65rem;
+    text-align: justify;
+}
+
+/** Kopub 바탕  */
+.ts-kopubbatang {
+    font-family: 'KoPubWorldBatang';
+    font-weight: 500;
+}
+
+.ts-kopubbatang-ft {
+    font-size: 0.4rem;
+    line-height: var(--prepage-content-margin-bottom);
+    /* letter-spacing: -1pt; */
+}
+
+.ts-kopubbatang-text {
+    font-size: 0.43rem;
+}
+
+.ts-kopubbatang-text > p {
+    text-indent: 0.35rem;
+    margin-bottom: 0.25rem;
+    line-height: 0.65rem;
+    text-align: justify;
+}
+
+
+/* #canvas-preview-page {
+    width: var(--prepage-max-width);
+    height: var(--prepage-max-height);
+} */
+
+/** 공통 포맷*/
+.page {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+
+    overflow: hidden;
+
+    width: var(--prepage-max-width);
+    height: var(--prepage-max-height);
+
+    background-color: var(--user-bg-color);
+    color: var(--user-font-color);
+
+    border: none;
+
+    background-size: cover;
+}
+
+.page-bgimg {
+    width: var(--prepage-max-width);
+    height: var(--prepage-max-height);
+
+    border: none;
+    display: none;
+
+    position: absolute;
+    z-index: 0;
+}
+
+div.page > p {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+}
+
+.line-remain {
+    text-indent: 0 !important;
+}
+
+
+/** 컨텐츠 */
+.contents { 
+    position: relative;
+
+    width: calc(var(--prepage-max-width) - var(--prepage-content-margin-top) - var(--prepage-content-margin-bottom));
+    height: calc(var(--prepage-max-height) - var(--prepage-content-margin-side)*2);
+    
+    margin-top: var(--prepage-content-margin-top);
+    margin-left: var(--prepage-content-margin-side);
+    margin-right: var(--prepage-content-margin-side);
+    margin-bottom: var(--prepage-content-margin-bottom);
+    
+    padding: 0;
+
+    /* background-color: #aab9b9; */
+}
+
+.contents-text {
+    position: relative;
+
+    width: 100%;
+    height: calc(100% - var(--prepage-content-margin-bottom));
+    max-height: calc(100% - var(--prepage-content-margin-bottom));
+
+    /* background-color: #2dc7c7; */
+}
+
+div.ts-content {
+    width: inherit;
+    height: calc(100% - var(--user-font-size) - 0.05rem);
+
+    word-break: break-all;
+
+    overflow: auto;
+
+    /* background-color: #237e7e; */
+}
+
+/* 꼬릿말 */
+.ts-footer {
+    white-space: nowrap;
+}
+
+
+/* 페이지 번호 */
+/* .name-page-num {
+    font-weight: bold;
+} */
+
+/* 왼쪽 꼬릿말 */
+.contents-footer-left {
+    position: relative;
+    float: left;
+
+    width: 50%;
+    height: var(--prepage-content-margin-bottom);
+
+    /* background-color: #b0c72d; */
+}
+
+
+/* 오른쪽 꼬릿말 */
+.contents-footer-right {
+    position: relative;
+    float: right;
+
+    width: 50%;
+    height: var(--prepage-content-margin-bottom);
+
+    /* background-color: #c72d2d; */
+}
+
+.name-footer-right {
+    float: right;
+    text-align: right;
+}
