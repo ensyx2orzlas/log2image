@@ -6,7 +6,7 @@
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'KoPubWorldBatang';
     font-weight: 500;
     font-style: normal;
@@ -16,7 +16,9 @@
         url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldBatangLight.woff') format('woff'),
         url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldBatangLight.ttf') format("truetype");
     font-display: swap;
-}
+} */
+
+@import url(//fonts.googleapis.com/earlyaccess/kopubbatang.css);
 
 /** 변수 */
 :root {
@@ -58,7 +60,9 @@
 
 /** Kopub 바탕  */
 .ts-kopubbatang {
-    font-family: 'KoPubWorldBatang';
+    /* font-family: 'KoPubWorldBatang'; */
+    font-family: 'KoPub Batang', serif;
+    font-style: normal;
     font-weight: 500;
 }
 
